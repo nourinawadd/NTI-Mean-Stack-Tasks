@@ -1,7 +1,7 @@
 function sum(args) {
     let total = 0;
     for (let i = 0; i < args.length; i++) {
-        if (typeof args[i] !== 'number' || isNaN(args[i])) {
+        if (typeof args[i] !== 'number' || isNaN(args[i]) || args[i] === null) {
             return "Invalid input, all arguments must be numbers";
         }
         total += args[i];

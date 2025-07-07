@@ -1,7 +1,7 @@
 let string = prompt("Enter a string: ");
 let count = 0;
 
-while (!string || typeof string !== "string" || !string.trim()) {
+while (!string || typeof string !== "string" || !string.trim() || string === null) {
   string = prompt("Invalid input. Please enter a non-empty string:");
 }
 

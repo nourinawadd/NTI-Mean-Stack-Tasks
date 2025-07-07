@@ -1,6 +1,6 @@
 let string = prompt("Enter a string: ");
 
-while (!string || string.trim() === "") {
+while (!string || string.trim() === "" || string === null) {
   string = prompt("Invalid input. Please enter a non-empty string:");
 }
 

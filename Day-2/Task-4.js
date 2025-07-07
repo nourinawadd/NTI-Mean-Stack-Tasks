@@ -1,6 +1,6 @@
 let name = prompt("Enter your name: ");
 
-while (!name || name.trim() === "") {
+while (!name || name.trim() === "" || name === null) {
     name = prompt("Name cannot be empty. Please enter your name: ");
 }
 
@@ -9,7 +9,7 @@ while(name.length <3) {
 }
 
 let phone = prompt("Enter your phone number: ");
-while (!phone || phone.trim() === "") {
+while (!phone || phone.trim() === "" || phone === null) {
     phone = prompt("Phone number cannot be empty. Please enter your phone number: ");
 }
 
@@ -18,7 +18,7 @@ while (!/^\d{11}$/.test(phone)) {
 }
 
 let email = prompt("Enter your email: ");
-while (!email || email.trim() === "") {
+while (!email || email.trim() === "" || email === null) {
     email = prompt("Email cannot be empty. Please enter your email: ");
 }
 

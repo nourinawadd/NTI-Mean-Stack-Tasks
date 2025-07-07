@@ -2,7 +2,7 @@ let numbers = [];
 
 for (let i = 0; i < 3; i++) {
     let value = prompt(`Enter number ${i + 1}:`);
-    while (isNaN(value) || value.trim() === "") {
+    while (isNaN(value) || value.trim() === "" || value === null) {
         value = prompt(`Invalid input. Please enter a valid number for number ${i + 1}:`);
     }
     numbers.push(Number(value));
