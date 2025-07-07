@@ -1,4 +1,9 @@
 let string = prompt("Enter a string: ");
+
+while (!string || string.trim() === "") {
+  string = prompt("Invalid input. Please enter a non-empty string:");
+}
+
 let considerCase = prompt("Consider case? (yes/no): ") === "yes";
 
 if(!considerCase) {
@@ -8,8 +13,8 @@ if(!considerCase) {
 let reversedString = string.split('').reverse().join('');
 
 if (string === reversedString) {
-    console.log("The string is a palindrome.");
+    alert("The string is a palindrome.");
 }
 else {
-    console.log("The string is not a palindrome.");
+    alert("The string is not a palindrome.");
 }

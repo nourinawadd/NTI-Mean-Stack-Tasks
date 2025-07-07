@@ -26,4 +26,4 @@ while (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     email = prompt("Invalid email format. Please enter a valid email: ");
 }
 
-console.log(`Welcome ${name}! Your phone number is ${phone} and your email is ${email}.`);
+alert(`Welcome ${name}! Your phone number is ${phone} and your email is ${email}.`);
