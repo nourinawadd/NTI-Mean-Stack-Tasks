@@ -2,7 +2,7 @@ document.getElementById("myNumber").addEventListener("keydown", function(event) 
     // allow: backspace, delete, tab, escape, enter, arrows
     if (
         [8, 9, 13, 27, 46, 37, 38, 39, 40].includes(event.keyCode) ||
-        // allow: Ctrl/cmd+A, Ctrl/cmd+C, Ctrl/cmd+V, Ctrl/cmd+X
+        // allow: Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
         ((event.ctrlKey || event.metaKey) && [65, 67, 86, 88].includes(event.keyCode))
     ) {
         return;

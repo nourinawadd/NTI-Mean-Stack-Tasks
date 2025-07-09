@@ -13,29 +13,43 @@ function renderPosts(posts) {
     });
 }
 
-// Using Promises (then)
+// using Promises
 function fetchPostsThen(num) {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-        .then(response => response.json())
-        .then(data => {
-            renderPosts(data.slice(0, num));
-        })
-        .catch(err => {
-            alert(err.message);
-        });
-}
+    const posts = [];
+    let fetched = 0;
 
-// Using async/await
-async function fetchPostsAsync(num) {
-    try {
-        const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-        const data = await response.json();
-        renderPosts(data.slice(0, num));
-    } catch (err) {
-        alert(err.message);
+    for (let i = 1; i <= num; i++) {
+        fetch(`https://jsonplaceholder.typicode.com/posts/${i}`)
+            .then(response => response.json())
+            .then(data => {
+                posts[i - 1] = data;
+                fetched++;
+                if (fetched === num) {
+                    renderPosts(posts);
+                }
+            })
+            .catch(err => {
+                alert(err.message);
+            });
     }
 }
 
+// using async/await
+async function fetchPostsAsync(num) {
+    const posts = [];
+    for (let i = 1; i <= num; i++) {
+        try {
+            const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${i}`);
+            const data = await response.json();
+            posts.push(data);
+        } catch (err) {
+            alert(err.message);
+            return;
+        }
+    }
+    renderPosts(posts);
+}
+
 // examples:
-//fetchPostsThen(3);
-// fetchPostsAsync(5);
+// fetchPostsThen(3);
+fetchPostsAsync(5);
