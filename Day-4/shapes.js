@@ -2,6 +2,18 @@ class Shape {
     constructor(name) {
         this.name = name;
     }
+
+    getArea() {
+        throw new Error('getArea() must be overridden in subclass');
+    }
+
+    getPerimeter() {
+        throw new Error('getPerimeter() must be overridden in subclass');
+    }
+
+    toString() {
+        return `${this.name} - Area: ${this.getArea().toFixed(2)}, Perimeter: ${this.getPerimeter().toFixed(2)}`;
+    }
 }
 
 class Rectangle extends Shape {
@@ -18,10 +30,6 @@ class Rectangle extends Shape {
     getPerimeter() {
         return 2*(this.width + this.height);
     }
-
-    toString() {
-        return `Rectangle - Area: ${this.getArea()}, Perimeter: ${this.getPerimeter()}`;
-    }
 }
 
 class Square extends Shape {
@@ -37,10 +45,6 @@ class Square extends Shape {
     getPerimeter() {
         return 4 * this.side;
     }
-
-    toString() {
-        return `Square - Area: ${this.getArea()}, Perimeter: ${this.getPerimeter()}`;
-    }
 }
 
 class Circle extends Shape {
@@ -55,10 +59,6 @@ class Circle extends Shape {
 
     getPerimeter() {
         return 2 * Math.PI * this.radius;
-    }
-
-    toString() {
-        return `Circle - Area: ${this.getArea().toFixed(2)}, Perimeter: ${this.getPerimeter().toFixed(2)}`;
     }
 }
 
