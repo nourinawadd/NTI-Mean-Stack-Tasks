@@ -14,14 +14,14 @@ export class Posts {
       body: 'Learning components, bindings, and directives.',
       id: 1,
       userid: 1,
-      username: 'ali'
+      username: 'nourinawad'
     },
     {
       title: 'Angular Basics',
       body: 'Learning components, bindings, and directives.',
       id: 2,
       userid: 2,
-      username: 'mona'
+      username: 'munaaldhshan'
     }
   ];
 }
