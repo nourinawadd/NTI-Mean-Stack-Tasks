@@ -3,5 +3,5 @@ export interface Ipost {
   body: string;
   id: number;
   userid: number;
-  username: string;
+  date: Date;
 }

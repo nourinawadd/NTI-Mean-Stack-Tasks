@@ -1,0 +1,28 @@
+.d-flex {
+  display: flex;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.rounded-circle {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #4CAF50;
+}
+
+.ms-3 {
+  margin-left: 1rem;
+}
+
+.d-flex h5 {
+  margin: 0 0 4px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.d-flex p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #666;
+}

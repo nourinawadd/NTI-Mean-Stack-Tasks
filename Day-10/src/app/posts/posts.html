@@ -5,7 +5,8 @@
   <div class="card-body">
     <p>{{ post.body }}</p>
   </div>
-  <footer class="card-footer">
-    <small>Created by <strong>{{ post.username }}</strong></small>
-  </footer>
+  <div class="card-footer">
+    <app-date-user [userid]="post.userid" [date_create]="post.date"></app-date-user>
+  </div>
+
 </section>
