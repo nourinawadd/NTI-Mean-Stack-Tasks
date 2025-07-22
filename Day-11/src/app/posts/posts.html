@@ -1,0 +1,12 @@
+<section class="card" *ngFor="let post of posts" role="article" aria-label="Post card">
+  <header class="card-header">
+    <h3>{{ post.title }}</h3>
+  </header>
+  <div class="card-body">
+    <p>{{ post.body }}</p>
+  </div>
+  <div class="card-footer">
+    <app-date-user [userid]="post.userid" [date_create]="post.date"></app-date-user>
+  </div>
+
+</section>
