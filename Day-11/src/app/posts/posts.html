@@ -1,12 +1,30 @@
-<section class="card" *ngFor="let post of posts" role="article" aria-label="Post card">
-  <header class="card-header">
-    <h3>{{ post.title }}</h3>
-  </header>
-  <div class="card-body">
-    <p>{{ post.body }}</p>
-  </div>
-  <div class="card-footer">
-    <app-date-user [userid]="post.userid" [date_create]="post.date"></app-date-user>
-  </div>
+<h2>Create New Post</h2>
+<form (submit)="addPost(); $event.preventDefault()">
+  <input [(ngModel)]="newPost.title" name="title" placeholder="Title" required>
+  <br>
+  <textarea [(ngModel)]="newPost.body" name="body" placeholder="Body" required></textarea>
+  <br>
+  <button type="submit">Post</button>
+</form>
 
-</section>
+<hr>
+
+<div *ngFor="let post of posts">
+  <h3>{{ post.title }}</h3>
+  <p>{{ post.body }}</p>
+  <p><small>Posted on: {{ post.date | date:'short' }}</small></p>
+
+  <button (click)="likePost(post.id)">❤️ Like ({{ likes[post.id] }})</button>
+  <button (click)="removePost(post.id)">🗑 Delete</button>
+
+  <div class="comments">
+    <h4>Comments:</h4>
+    <div *ngFor="let comment of comments[post.id]">
+      <p>- {{ comment }}</p>
+    </div>
+
+    <input [(ngModel)]="newComments[post.id]" placeholder="Write a comment..." />
+    <button (click)="addComment(post.id)">Comment</button>
+  </div>
+  <hr>
+</div>

@@ -7,6 +7,7 @@ import { NavBar } from './nav-bar/nav-bar';
 import { Posts } from './posts/posts';
 import { Child } from './child/child';
 import { DateUser } from './date-user/date-user';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DateUser } from './date-user/date-user';
 ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideZonelessChangeDetection()
+    provideZonelessChangeDetection(),
+    UserService
   ],
   bootstrap: [App]
 })
