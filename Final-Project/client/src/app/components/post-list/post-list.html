@@ -1,1 +1,20 @@
 <p>post-list works!</p>
+<div *ngFor="let post of posts" class="post">
+  <div class="post-header">
+    <strong>{{ post.user.username }}</strong>
+    <button (click)="deletePost(post._id)">🗑️</button>
+  </div>
+
+  <p>{{ post.content }}</p>
+
+  <div class="post-actions">
+    <button (click)="likePost(post._id)">❤️ {{ post.likes.length }}</button>
+  </div>
+
+  <div class="comments">
+    <div *ngFor="let c of post.comments">
+      <strong>{{ c.user.username }}:</strong> {{ c.text }}
+    </div>
+    <input #commentInput placeholder="Write a comment..." (keyup.enter)="comment(post._id, commentInput.value); commentInput.value=''" />
+  </div>
+</div>
