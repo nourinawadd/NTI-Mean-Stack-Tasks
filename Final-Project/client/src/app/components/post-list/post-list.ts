@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PostService } from '../../services/post.service';
+import { HttpClient } from '@angular/common/http';
+import { Post } from '../../models/post.model';
 import { PostItem } from '../post-item/post-item';
 
 @Component({
@@ -11,15 +12,15 @@ import { PostItem } from '../post-item/post-item';
     <app-post-item *ngFor="let post of posts" [post]="post"></app-post-item>
   `
 })
-export class PostList {
-  posts: any[] = [];
+export class PostList implements OnInit {
+  posts: Post[] = [];
 
-  constructor(private postService: PostService) {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.postService.getPosts().subscribe({
-      next: (data) => this.posts = data,
-      error: (err) => console.error('Failed to load posts:', err)
+    this.http.get<Post[]>('http://localhost:3000/posts').subscribe({
+      next: data => this.posts = data,
+      error: err => console.error('Failed to fetch posts', err)
     });
   }
 }
