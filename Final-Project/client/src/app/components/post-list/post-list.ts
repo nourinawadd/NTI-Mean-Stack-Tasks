@@ -1,37 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { Post } from '../../models/post.model';
-import { Comment } from '../../models/comment.model';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { PostService } from '../../services/post.service';
-import { AuthService } from '../../services/auth.service';
+import { PostItem } from '../post-item/post-item';
 
 @Component({
   selector: 'app-post-list',
-  templateUrl: './post-list.html'
+  standalone: true,
+  imports: [CommonModule, PostItem],
+  template: `
+    <app-post-item *ngFor="let post of posts" [post]="post"></app-post-item>
+  `
 })
-export class PostList implements OnInit {
-  posts: Post[] = [];
+export class PostList {
+  posts: any[] = [];
 
-  constructor(
-    private postService: PostService,
-    public authService: AuthService
-  ) {}
+  constructor(private postService: PostService) {}
 
-  ngOnInit(): void {
-    this.loadPosts();
-  }
-
-  loadPosts() {
-    this.postService.getPosts().subscribe(posts => (this.posts = posts));
-  }
-
-  onComment(postId: string, text: string) {
-    const user = this.authService.currentUser;
-    if (!user) return;
-
-    this.postService.addComment(postId, user._id, text).subscribe((newComment: Comment) => {
-      const post = this.posts.find(p => p._id === postId);
-      if (post) post.comments.push(newComment);
+  ngOnInit() {
+    this.postService.getPosts().subscribe({
+      next: (data) => this.posts = data,
+      error: (err) => console.error('Failed to load posts:', err)
     });
   }
-
 }

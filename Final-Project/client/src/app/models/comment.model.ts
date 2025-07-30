@@ -1,4 +1,4 @@
-export interface Comment {
+export interface AppComment {
   _id: string;
   text: string;
   createdAt: string;

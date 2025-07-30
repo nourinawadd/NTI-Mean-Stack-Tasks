@@ -1,5 +1,5 @@
 import { User } from './user.model';
-import { Comment } from './comment.model';
+import { AppComment } from './comment.model';
 
 export interface Post {
   _id: string;
