@@ -1,1 +1,6 @@
-<p>comment-section works!</p>
+<div *ngFor="let comment of comments">
+  <strong>{{ comment.user.username }}:</strong> {{ comment.text }}
+</div>
+
+<input [(ngModel)]="text" placeholder="Add a comment..." />
+<button (click)="submitComment()">Post</button>

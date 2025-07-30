@@ -1,44 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from '../../services/post';
-import { HttpClient } from '@angular/common/http';
+import { Post } from '../../models/post.model';
+import { Comment } from '../../models/comment.model';
+import { PostService } from '../../services/post.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-post-list',
-  templateUrl: './post-list.html',
-  styleUrls: ['./post-list.css']
+  templateUrl: './post-list.html'
 })
-export class PostListComponent implements OnInit {
-  posts: any[] = [];
-  userId: string = 'demo-user-id'; // temporary static user ID
+export class PostList implements OnInit {
+  posts: Post[] = [];
 
-  constructor(private postService: PostService) {}
+  constructor(
+    private postService: PostService,
+    public authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.loadPosts();
   }
 
-  loadPosts(): void {
-    this.postService.getPosts().subscribe(posts => {
-      this.posts = posts;
+  loadPosts() {
+    this.postService.getPosts().subscribe(posts => (this.posts = posts));
+  }
+
+  onComment(postId: string, text: string) {
+    const user = this.authService.currentUser;
+    if (!user) return;
+
+    this.postService.addComment(postId, user._id, text).subscribe((newComment: Comment) => {
+      const post = this.posts.find(p => p._id === postId);
+      if (post) post.comments.push(newComment);
     });
   }
 
-  likePost(postId: string): void {
-    this.postService.likePost(postId, this.userId).subscribe(() => {
-      this.loadPosts();
-    });
-  }
-
-  deletePost(postId: string): void {
-    this.postService.deletePost(postId).subscribe(() => {
-      this.loadPosts();
-    });
-  }
-
-  comment(postId: string, commentText: string): void {
-    if (!commentText.trim()) return;
-    this.postService.addComment(postId, this.userId, commentText).subscribe(() => {
-      this.loadPosts();
-    });
-  }
 }
