@@ -1,6 +1,6 @@
 # Client
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.3.
+This is the frontend of a MEAN stack social feed app. Users can create posts, like them, and comment. Built using Angular 17+ and styled with a responsive design.
 
 ## Development server
 
