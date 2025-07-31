@@ -16,5 +16,5 @@ This is the backend of the MEAN stack social feed application, built with **Node
 1. **Clone the repo** (from the root project):
 
 ```bash
-git clone https://github.com/nourinawadd/NTI-Mean-Stack-Tasks
+git clone https://github.com/nourinawadd/NTI-Mean-Stack-Tasks.git
 cd NTI-Mean-Stack-Tasks/Final-Project/server
