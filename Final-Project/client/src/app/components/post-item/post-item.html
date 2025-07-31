@@ -1,27 +1,15 @@
 <div class="post-card">
-  <div class="post-content">
-    <p>{{ post.content }}</p>
-  </div>
+  <p class="post-content">{{ post.content }}</p>
 
   <div class="post-actions">
-    <button class="like-btn" (click)="likePost()">
-      ❤️ Like ({{ post.likes }})
-    </button>
-    <button class="delete-btn" (click)="deletePost()">
-      🗑️ Delete
-    </button>
+    <button class="action-btn like" (click)="likePost()">❤️ Like ({{ post.likes }})</button>
+    <button class="action-btn delete" (click)="deletePost()">🗑️ Delete</button>
   </div>
 
-  <div class="comments-section">
-    <input
-      [(ngModel)]="commentText"
-      (keyup.enter)="addComment()"
-      placeholder="Write a comment..."
-      class="comment-input"
-    />
-
-    <div *ngFor="let comment of post.comments" class="comment">
-      💬 {{ comment.text }}
+  <div class="comment-section">
+    <input [(ngModel)]="commentText" (keyup.enter)="addComment()" class="comment-input" placeholder="Write a comment...">
+    <div class="comment" *ngFor="let comment of post.comments">
+      {{ comment.text }}
     </div>
   </div>
 </div>

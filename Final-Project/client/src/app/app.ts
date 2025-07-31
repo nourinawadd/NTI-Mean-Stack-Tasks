@@ -14,12 +14,6 @@ import { PostList } from './components/post-list/post-list';
     PostForm,
     PostList
   ],
-  template: `
-    <div class="container p-4">
-      <h1 class="text-center mb-4">Social Feed</h1>
-      <app-post-form></app-post-form>
-      <app-post-list></app-post-list>
-    </div>
-  `
+  templateUrl: './app.html'
 })
 export class AppComponent {}
