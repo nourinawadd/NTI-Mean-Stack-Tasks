@@ -3,12 +3,11 @@ import { CommonModule } from '@angular/common';
 import { PostItem } from '../post-item/post-item';
 import { PostService } from '../../services/post.service';
 import { Post } from '../../models/post.model';
-import { PostForm } from '../post-form/post-form';
 
 @Component({
   selector: 'app-post-list',
   standalone: true,
-  imports: [CommonModule, PostItem, PostForm],
+  imports: [CommonModule, PostItem],
   templateUrl: './post-list.html',
   styleUrl: './post-list.css'
 })
