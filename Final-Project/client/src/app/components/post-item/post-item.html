@@ -1,1 +1,27 @@
-<p>post-item works!</p>
+<div class="post-card">
+  <div class="post-content">
+    <p>{{ post.content }}</p>
+  </div>
+
+  <div class="post-actions">
+    <button class="like-btn" (click)="likePost()">
+      ❤️ Like ({{ post.likes }})
+    </button>
+    <button class="delete-btn" (click)="deletePost()">
+      🗑️ Delete
+    </button>
+  </div>
+
+  <div class="comments-section">
+    <input
+      [(ngModel)]="commentText"
+      (keyup.enter)="addComment()"
+      placeholder="Write a comment..."
+      class="comment-input"
+    />
+
+    <div *ngFor="let comment of post.comments" class="comment">
+      💬 {{ comment.text }}
+    </div>
+  </div>
+</div>

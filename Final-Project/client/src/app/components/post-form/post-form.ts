@@ -6,10 +6,8 @@ import { PostService } from '../../services/post.service';
   selector: 'app-post-form',
   standalone: true,
   imports: [FormsModule],
-  template: `
-    <textarea [(ngModel)]="content" rows="4" class="form-control mb-2" placeholder="What's on your mind?"></textarea>
-    <button class="btn btn-primary w-100" (click)="createPost()">Post</button>
-  `
+  templateUrl: './post-form.html',
+  styleUrl: './post-form.css'
 })
 export class PostForm {
   content = '';
@@ -18,8 +16,12 @@ export class PostForm {
   createPost() {
     if (!this.content.trim()) return;
     this.postService.addPost(this.content).subscribe({
-      next: () => this.content = '',
+      next: () => {
+        this.content = '';
+        this.postService.triggerRefresh(); // 🔥 tell PostList to update
+      },
       error: (err) => console.error('Post failed:', err)
     });
   }
+
 }

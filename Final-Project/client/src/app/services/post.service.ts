@@ -1,23 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { Post } from '../models/post.model';
 
 @Injectable({ providedIn: 'root' })
 export class PostService {
-  private posts = [
-    { content: 'Hello World!', comments: ['Nice post!', 'Welcome!'] },
-    { content: 'Angular is awesome!', comments: [] }
-  ];
+  private apiUrl = 'http://localhost:3000/posts';
+
+  private refreshPostsSubject = new BehaviorSubject<void>(undefined);
+  refreshPosts$ = this.refreshPostsSubject.asObservable();
 
   constructor(private http: HttpClient) {}
 
-  getPosts(): Observable<any[]> {
-    return of(this.posts);
+  getPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>(this.apiUrl);
   }
 
-  addPost(content: string): Observable<any> {
-    const newPost = { content, comments: [] };
-    this.posts.unshift(newPost);
-    return of(newPost);
+  addPost(content: string): Observable<Post> {
+    return this.http.post<Post>(this.apiUrl, { content });
+  }
+
+  triggerRefresh() {
+    this.refreshPostsSubject.next();
   }
 }

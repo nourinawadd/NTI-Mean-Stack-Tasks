@@ -1,6 +1,6 @@
 export interface Post {
-  _id: string;
+  _id?: string;
   content: string;
   likes: number;
-  comments: string[];
+  comments: { id: string; text: string }[];
 }
