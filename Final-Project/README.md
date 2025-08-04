@@ -52,8 +52,8 @@ A clean and functional **Social Feed** web application built using the **MEAN st
 #### 1. Clone the repository
 
 ```bash
-git clone https://github.com/nourinawadd/mean-social-feed-app.git
-cd mean-social-feed-app
+git clone https://github.com/nourinawadd/NTI-Mean-Stack-Tasks.git
+cd NTI-Mean-Stack-Tasks/Final-Project
 ```
 
 ---
