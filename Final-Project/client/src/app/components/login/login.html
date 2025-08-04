@@ -1,0 +1,32 @@
+<div class="login-container">
+  <h2>{{ title }}</h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input 
+        id="email" 
+        name="email" 
+        type="email" 
+        [(ngModel)]="email" 
+        required />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input 
+        id="password" 
+        name="password" 
+        type="password" 
+        [(ngModel)]="password" 
+        required />
+    </div>
+
+    <button type="submit">{{ buttonText }}</button>
+
+    <p class="switch-text">
+      {{ switchText }} 
+      <a [routerLink]="switchLink">Here</a>
+    </p>
+  </form>
+</div>
